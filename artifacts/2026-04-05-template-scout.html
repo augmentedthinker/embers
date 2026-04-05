@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Template Scout · 2026-04-05 · Embers</title>
+  <style>
+    :root {
+      --bg: #0a0b0f;
+      --panel: #12151d;
+      --panel-2: #171b24;
+      --text: #f3efe7;
+      --muted: #c8baa6;
+      --line: rgba(255,255,255,0.08);
+      --shadow: 0 20px 50px rgba(0,0,0,0.28);
+      --link: #ffd29a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #07080b 0%, #0e1218 100%);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .wrap {
+      width: min(1320px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 54px 0 74px;
+    }
+    .eyebrow {
+      color: #ffbf84;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.78rem;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-family: Georgia, serif;
+      font-size: clamp(3rem, 6vw, 4.9rem);
+      line-height: 0.95;
+    }
+    .lede {
+      max-width: 900px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 18px;
+    }
+    nav {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 38px;
+    }
+    nav a, a {
+      color: var(--link);
+      text-decoration: none;
+    }
+    nav a:hover, a:hover { text-decoration: underline; }
+    .section {
+      margin-top: 46px;
+    }
+    .section h2 {
+      margin: 0 0 10px;
+      font-family: Georgia, serif;
+      font-size: 2rem;
+    }
+    .section p {
+      color: var(--muted);
+      max-width: 840px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+      gap: 24px;
+      margin-top: 22px;
+    }
+    .candidate {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .candidate-preview {
+      min-height: 300px;
+      position: relative;
+      overflow: hidden;
+    }
+    .candidate-body {
+      padding: 22px;
+      background: var(--panel-2);
+    }
+    .candidate-body h3 {
+      margin: 0 0 8px;
+      font-size: 1.35rem;
+    }
+    .candidate-body p {
+      color: var(--muted);
+      margin: 0 0 14px;
+      font-size: 0.96rem;
+    }
+    .meta {
+      color: #ffbf84;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.74rem;
+      margin-bottom: 10px;
+    }
+    .chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .chip {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.10);
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    .source {
+      font-size: 0.9rem;
+    }
+
+    .preview-case {
+      background: linear-gradient(180deg, #f5f0e7 0%, #ece4d7 100%);
+      color: #171311;
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 1fr;
+      align-content: center;
+      gap: 16px;
+    }
+    .preview-case .kicker { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: #7a5b47; }
+    .preview-case .title { font-family: Georgia, serif; font-size: 2rem; max-width: 14ch; line-height: 1.02; }
+    .preview-case .rail {
+      display: flex; gap: 10px; flex-wrap: wrap;
+    }
+    .preview-case .rail span {
+      border: 1px solid rgba(0,0,0,0.10); border-radius: 999px; padding: 6px 10px; font-size: 0.8rem; color: #5d4d40;
+    }
+
+    .preview-storyteller {
+      background: linear-gradient(180deg, #0f1115 0%, #191d25 100%);
+      color: #f7f3ee;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .preview-storyteller .title { font-family: Georgia, serif; font-size: 2.2rem; max-width: 11ch; line-height: 1.02; }
+    .preview-storyteller .sub { color: #c9bbaa; max-width: 28ch; margin-top: 10px; }
+
+    .preview-astropaper {
+      background: linear-gradient(180deg, #f8f8f8 0%, #efefef 100%);
+      color: #1a1a1a;
+      padding: 24px 26px;
+      display: grid;
+      grid-template-columns: 1fr;
+      align-content: start;
+      gap: 12px;
+    }
+    .preview-astropaper .topbar {
+      display: flex; justify-content: space-between; font-size: 0.88rem; color: #666;
+    }
+    .preview-astropaper .title { font-size: 1.7rem; font-weight: 700; max-width: 16ch; line-height: 1.08; }
+    .preview-astropaper .excerpt { color: #444; max-width: 34ch; }
+    .preview-astropaper .list { margin-top: auto; display: grid; gap: 8px; color: #444; }
+
+    .preview-github {
+      background: #ffffff;
+      color: #1f2328;
+      padding: 22px;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+    }
+    .preview-github .window {
+      border: 1px solid #d0d7de; border-radius: 10px; overflow: hidden; background: #fff;
+    }
+    .preview-github .window-top {
+      background: #f6f8fa; border-bottom: 1px solid #d0d7de; padding: 10px 14px; font-size: 0.85rem; color: #57606a;
+    }
+    .preview-github .markdown {
+      padding: 16px 18px;
+    }
+    .preview-github h4 { margin: 0 0 12px; font-size: 1.2rem; }
+    .preview-github ul { margin: 0; padding-left: 20px; color: #57606a; }
+
+    .preview-tufte {
+      background: #fdfbf7;
+      color: #111;
+      padding: 24px 24px 24px 38px;
+      display: grid;
+      grid-template-columns: 1fr 100px;
+      gap: 18px;
+      font-family: Georgia, serif;
+    }
+    .preview-tufte .main h4 { margin: 0 0 10px; font-size: 1.3rem; }
+    .preview-tufte .main p { margin: 0; color: #2b2b2b; max-width: 24ch; }
+    .preview-tufte .side {
+      font-size: 0.8rem; color: #666; border-left: 1px solid rgba(0,0,0,0.10); padding-left: 12px; align-self: start;
+    }
+
+    .preview-pico {
+      background: linear-gradient(180deg, #0f172a 0%, #111827 100%);
+      color: #f8fafc;
+      padding: 24px;
+    }
+    .preview-pico .shell {
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 18px;
+    }
+    .preview-pico .shell h4 { margin: 0 0 10px; font-size: 1.35rem; }
+    .preview-pico .buttons { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+    .preview-pico .buttons span {
+      border-radius: 999px; padding: 8px 12px; background: #3b82f6; font-size: 0.82rem;
+    }
+    .preview-pico .buttons span.alt { background: transparent; border: 1px solid rgba(255,255,255,0.18); }
+
+    .preview-water {
+      background: #f8fafb;
+      color: #222;
+      padding: 24px;
+      font-family: system-ui, sans-serif;
+    }
+    .preview-water h4 { margin: 0 0 10px; font-size: 1.35rem; }
+    .preview-water p { margin: 0 0 12px; color: #4a4a4a; max-width: 32ch; }
+    .preview-water .line { height: 10px; border-radius: 999px; background: #dce7f5; margin: 8px 0; width: 80%; }
+    .preview-water .line.short { width: 58%; }
+
+    footer {
+      margin-top: 46px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="eyebrow">Artifact 003 · External Reference Pass</div>
+    <h1>Template Scout</h1>
+    <p class="lede">
+      This artifact is based on real external template and library directions rather than improvised moodboards. The cards below are still hand-rendered summaries, but now they are anchored to actual source candidates we can pull from or emulate.
+    </p>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../artifacts.html">Artifacts</a>
+      <a href="./2026-04-05-style-explorer.html">Previous style explorer</a>
+    </nav>
+
+    <section class="section">
+      <h2>Embers house-style directions</h2>
+      <p>
+        These are the stronger candidates for the “distinct in-house style” side — meaning templates with more actual layout personality than generic markdown renderers.
+      </p>
+      <div class="grid">
+        <article class="candidate">
+          <div class="candidate-preview preview-case">
+            <div class="kicker">Case-study-first / structured narrative</div>
+            <div class="title">Continuity as reasoning, trade-offs, and decisions</div>
+            <div class="rail">
+              <span>context</span><span>constraints</span><span>outcomes</span>
+            </div>
+          </div>
+          <div class="candidate-body">
+            <div class="meta">House Candidate A</div>
+            <h3>Case for Astro</h3>
+            <p>
+              Strong if Embers should feel like a serious thinking surface — less mystical, more “show the reasoning, not just the result.”
+            </p>
+            <div class="chips">
+              <span class="chip">structured</span>
+              <span class="chip">credible</span>
+              <span class="chip">case-study</span>
+            </div>
+            <div class="source">Source: <a href="https://astro.build/themes/details/case-portfolio-theme-for-astro/">Case theme</a></div>
+          </div>
+        </article>
+
+        <article class="candidate">
+          <div class="candidate-preview preview-storyteller">
+            <div class="title">A beautiful, minimal surface for ongoing narrative</div>
+            <div class="sub">Elegant dark presentation with lightweight storytelling energy.</div>
+          </div>
+          <div class="candidate-body">
+            <div class="meta">House Candidate B</div>
+            <h3>Storyteller for Astro</h3>
+            <p>
+              Better if Embers should feel literary, minimal, and elegant rather than heavily systematized.
+            </p>
+            <div class="chips">
+              <span class="chip">minimal</span>
+              <span class="chip">elegant</span>
+              <span class="chip">narrative</span>
+            </div>
+            <div class="source">Source: <a href="https://astro.build/themes/details/storyteller/">Storyteller theme</a></div>
+          </div>
+        </article>
+
+        <article class="candidate">
+          <div class="candidate-preview preview-astropaper">
+            <div class="topbar"><span>AstroPaper</span><span>clean / accessible</span></div>
+            <div class="title">A highly readable, customizable publishing surface</div>
+            <div class="excerpt">Balanced enough to become either a house style or a reader mode depending on how much we customize it.</div>
+            <div class="list">
+              <div>— accessible by default</div>
+              <div>— light / dark support</div>
+              <div>— markdown-native</div>
+            </div>
+          </div>
+          <div class="candidate-body">
+            <div class="meta">Bridge Candidate</div>
+            <h3>AstroPaper</h3>
+            <p>
+              A strong middle-ground candidate. Less distinctive than a dramatic house style, but cleaner and more adaptable.
+            </p>
+            <div class="chips">
+              <span class="chip">balanced</span>
+              <span class="chip">content-first</span>
+              <span class="chip">adaptable</span>
+            </div>
+            <div class="source">Source: <a href="https://astro.build/themes/details/astropaper/">AstroPaper</a></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Reader / markdown directions</h2>
+      <p>
+        These are better for the “simple reading surface” side — where the artifact is primarily text and we want legibility, not theatricality.
+      </p>
+      <div class="grid">
+        <article class="candidate">
+          <div class="candidate-preview preview-github">
+            <div class="window">
+              <div class="window-top">README.md</div>
+              <div class="markdown">
+                <h4>Continuity Threshold</h4>
+                <ul>
+                  <li>fast to generate</li>
+                  <li>familiar to anyone on GitHub</li>
+                  <li>excellent for plain markdown artifacts</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="candidate-body">
+            <div class="meta">Reader Candidate A</div>
+            <h3>GitHub Markdown CSS</h3>
+            <p>
+              The pragmatic option. If you want artifacts to feel like polished markdown documents, this is one of the cleanest possible baselines.
+            </p>
+            <div class="chips">
+              <span class="chip">familiar</span>
+              <span class="chip">markdown-native</span>
+              <span class="chip">pragmatic</span>
+            </div>
+            <div class="source">Source: <a href="https://github.com/sindresorhus/github-markdown-css">github-markdown-css</a></div>
+          </div>
+        </article>
+
+        <article class="candidate">
+          <div class="candidate-preview preview-tufte">
+            <div class="main">
+              <h4>Artifact as essay with room for thought</h4>
+              <p>Wide margins, careful typography, and support for notes and commentary make this feel reflective rather than merely functional.</p>
+            </div>
+            <div class="side">sidenote<br/>margin note<br/>citation</div>
+          </div>
+          <div class="candidate-body">
+            <div class="meta">Reader Candidate B</div>
+            <h3>Tufte CSS</h3>
+            <p>
+              Best if you want an essayistic or scholarly reading mode with margin-note energy and more intellectual texture.
+            </p>
+            <div class="chips">
+              <span class="chip">essay</span>
+              <span class="chip">scholarly</span>
+              <span class="chip">annotated</span>
+            </div>
+            <div class="source">Source: <a href="https://edwardtufte.github.io/tufte-css/">Tufte CSS</a></div>
+          </div>
+        </article>
+
+        <article class="candidate">
+          <div class="candidate-preview preview-pico">
+            <div class="shell">
+              <h4>Pico.css reader shell</h4>
+              <div>Semantic HTML, elegant defaults, and clean responsiveness without a lot of class overhead.</div>
+              <div class="buttons"><span>Primary</span><span class="alt">Secondary</span></div>
+            </div>
+          </div>
+          <div class="candidate-body">
+            <div class="meta">Reader Candidate C</div>
+            <h3>Pico CSS</h3>
+            <p>
+              Good when you want simple-but-polished semantic HTML with enough UI structure to support buttons, panels, and lightweight interactions.
+            </p>
+            <div class="chips">
+              <span class="chip">semantic</span>
+              <span class="chip">polished</span>
+              <span class="chip">lightweight UI</span>
+            </div>
+            <div class="source">Source: <a href="https://picocss.com/">Pico CSS</a></div>
+          </div>
+        </article>
+
+        <article class="candidate">
+          <div class="candidate-preview preview-water">
+            <h4>Water.css</h4>
+            <p>Drop in a stylesheet and your plain semantic HTML immediately becomes more readable with almost no effort.</p>
+            <div class="line"></div>
+            <div class="line short"></div>
+          </div>
+          <div class="candidate-body">
+            <div class="meta">Reader Candidate D</div>
+            <h3>Water.css</h3>
+            <p>
+              The fastest path to “make this readable and decent-looking immediately.” Less distinctive, but excellent as a no-fuss baseline.
+            </p>
+            <div class="chips">
+              <span class="chip">drop-in</span>
+              <span class="chip">simple</span>
+              <span class="chip">fastest setup</span>
+            </div>
+            <div class="source">Source: <a href="https://watercss.kognise.dev/">Water.css</a></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      Suggested next move: pick one house-style direction and one reader direction, then we adapt Embers around those instead of inventing from empty air.
+    </footer>
+  </div>
+</body>
+</html>
