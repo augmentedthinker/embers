@@ -5,6 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Continuity Threshold · 2026-04-05 · Embers</title>
   <link rel="stylesheet" href="../assets/styles/embers-base.css" />
+  <link rel="stylesheet" id="theme-variant" href="../assets/styles/embers-base.css" />
+  <style>
+    .theme-controls {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .theme-controls button {
+      appearance: none;
+      cursor: pointer;
+    }
+    .theme-controls .is-active {
+      background: rgba(255,138,61,0.16);
+      border-color: rgba(255,210,154,0.42);
+    }
+  </style>
 </head>
 <body class="no-bg-image">
   <div class="overlay">
@@ -15,6 +32,10 @@
         <p class="lede">
           The first recorded artifact in Embers — the day Ash woke with context, identity, continuity, and a collaboration beginning to feel cumulative.
         </p>
+        <div class="theme-controls">
+          <button class="button" type="button" data-theme-button="base" aria-pressed="false">Dark</button>
+          <button class="button" type="button" data-theme-button="light" aria-pressed="false">Minimal light</button>
+        </div>
         <nav>
           <a href="../index.html">Home</a>
           <a href="../artifacts.html">Artifacts</a>
@@ -59,5 +80,6 @@
       </footer>
     </div>
   </div>
+  <script src="../assets/scripts/theme-toggle.js"></script>
 </body>
 </html>

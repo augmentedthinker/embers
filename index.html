@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Embers</title>
   <link rel="stylesheet" href="./assets/styles/embers-base.css" />
+  <link rel="stylesheet" id="theme-variant" href="./assets/styles/embers-base.css" />
   <style>
     .dashboard-grid {
       grid-template-columns: 1.1fr 1fr;
@@ -46,6 +47,20 @@
         linear-gradient(rgba(255,248,240,0.70), rgba(255,248,240,0.82)),
         url('./assets/images/2026-04-05-continuity-threshold.svg') center/cover no-repeat,
         linear-gradient(180deg, #f7efe5 0%, #eadccf 100%);
+    }
+    .theme-toggle-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .theme-toggle-row button {
+      appearance: none;
+      cursor: pointer;
+    }
+    .theme-toggle-row .is-active {
+      background: rgba(255,138,61,0.16);
+      border-color: rgba(255,210,154,0.42);
     }
     .style-preview .preview-title {
       font-family: Georgia, 'Times New Roman', serif;
@@ -109,7 +124,7 @@
             <div class="section-label">Style Card 001</div>
             <h3>Embers Base · Dark</h3>
             <p>
-              Warm ember accents, dark glass panels, serif titles, and a cinematic background image treatment. This is now the shared style asset used by the pages.
+              Warm ember accents, dark glass panels, serif titles, and a cinematic background image treatment. This is the current shared default.
             </p>
             <div class="swatches">
               <div class="swatch" style="background:#0a0b0f"></div>
@@ -126,6 +141,26 @@
           </article>
 
           <article class="style-card">
+            <div class="section-label">Style Card 002</div>
+            <h3>Minimal Light</h3>
+            <p>
+              A quieter, more spacious variant: pale surfaces, softer contrast, and a restrained editorial feel for reading artifacts in a calmer mode.
+            </p>
+            <div class="swatches">
+              <div class="swatch" style="background:#f7f2eb"></div>
+              <div class="swatch" style="background:#fffaf3"></div>
+              <div class="swatch" style="background:#8d5a2b"></div>
+              <div class="swatch" style="background:#a56e39"></div>
+              <div class="swatch" style="background:#1d1a17"></div>
+            </div>
+            <div>
+              <span class="code-chip">embers-minimal-light.css</span>
+              <span class="code-chip">light mode</span>
+              <span class="code-chip">shared asset</span>
+            </div>
+          </article>
+
+          <article class="style-card">
             <div class="section-label">Preview</div>
             <div class="style-preview">
               <div class="preview-title">Embers</div>
@@ -134,7 +169,11 @@
             <div style="height:12px"></div>
             <div class="style-preview light">
               <div class="preview-title">Embers</div>
-              <div class="preview-note">Possible future light variant</div>
+              <div class="preview-note">Minimal light reading mode</div>
+            </div>
+            <div class="theme-toggle-row">
+              <button class="button" type="button" data-theme-button="base" aria-pressed="false">Use dark theme</button>
+              <button class="button" type="button" data-theme-button="light" aria-pressed="false">Use light theme</button>
             </div>
           </article>
         </div>
@@ -145,5 +184,6 @@
       </footer>
     </div>
   </div>
+  <script src="./assets/scripts/theme-toggle.js"></script>
 </body>
 </html>

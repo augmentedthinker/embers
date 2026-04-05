@@ -1,0 +1,68 @@
+:root {
+  --bg: #f7f2eb;
+  --bg-2: #efe5d9;
+  --panel: rgba(255, 252, 247, 0.82);
+  --panel-solid: #fffaf3;
+  --panel-soft: rgba(255,255,255,0.62);
+  --text: #1d1a17;
+  --muted: #65584d;
+  --accent: #8d5a2b;
+  --accent-soft: #a56e39;
+  --line: rgba(29,26,23,0.10);
+  --line-soft: rgba(29,26,23,0.09);
+  --shadow: 0 20px 60px rgba(60,40,20,0.10);
+  --shadow-soft: 0 18px 40px rgba(60,40,20,0.08);
+}
+
+body {
+  background:
+    linear-gradient(rgba(255,250,244,0.84), rgba(255,250,244,0.92)),
+    url('../images/2026-04-05-continuity-threshold.svg') center/cover fixed no-repeat,
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+}
+
+body.no-bg-image {
+  background:
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+}
+
+.title {
+  text-shadow: none;
+}
+
+.quote,
+.eyebrow,
+.section-label,
+.meta,
+nav a,
+a {
+  color: var(--accent);
+}
+
+.card,
+.side-panel,
+.coming-soon,
+.style-card,
+.menu-shell,
+.hero,
+.artifact,
+.section-shell {
+  backdrop-filter: blur(0px);
+}
+
+.artifact-buttons a,
+.ghost-link,
+.button,
+.links a {
+  background: rgba(255,255,255,0.58);
+  color: var(--text);
+  border-color: rgba(29,26,23,0.10);
+}
+
+.artifact-buttons a:hover,
+.ghost-link:hover,
+.button:hover,
+.links a:hover {
+  background: rgba(141,90,43,0.10);
+  border-color: rgba(141,90,43,0.25);
+}
