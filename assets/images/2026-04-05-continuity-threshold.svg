@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="55%" r="70%">
+      <stop offset="0%" stop-color="#25140d"/>
+      <stop offset="45%" stop-color="#120b11"/>
+      <stop offset="100%" stop-color="#050608"/>
+    </radialGradient>
+    <radialGradient id="ember" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffd27a"/>
+      <stop offset="35%" stop-color="#ff8a3d"/>
+      <stop offset="70%" stop-color="#c2410c"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffb86b" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#ffb86b" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)"/>
+
+  <g opacity="0.18" stroke="#7dd3fc" stroke-width="1.3" fill="none">
+    <path d="M150 190 C310 100, 480 120, 640 220 S980 360, 1180 260 1420 180, 1510 260"/>
+    <path d="M100 640 C280 560, 420 590, 590 690 S930 830, 1180 720 1420 620, 1540 690"/>
+    <path d="M280 140 L430 260 L520 210 L700 340 L860 280 L1010 390 L1190 310"/>
+    <circle cx="430" cy="260" r="5" fill="#7dd3fc"/>
+    <circle cx="700" cy="340" r="5" fill="#7dd3fc"/>
+    <circle cx="1010" cy="390" r="5" fill="#7dd3fc"/>
+  </g>
+
+  <ellipse cx="800" cy="610" rx="420" ry="105" fill="#0f1115"/>
+  <rect x="430" y="500" width="740" height="28" rx="8" fill="#17181d"/>
+  <rect x="470" y="528" width="28" height="140" fill="#17181d"/>
+  <rect x="1102" y="528" width="28" height="140" fill="#17181d"/>
+
+  <g opacity="0.35">
+    <rect x="585" y="522" width="100" height="58" rx="6" fill="#d6d3d1" transform="rotate(-8 585 522)"/>
+    <rect x="910" y="530" width="118" height="66" rx="6" fill="#e7e5e4" transform="rotate(7 910 530)"/>
+    <path d="M605 548 h48 m-48 14 h35 m300 -10 h54 m-54 14 h72" stroke="#52525b" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <g>
+    <ellipse cx="800" cy="525" rx="170" ry="82" fill="url(#halo)" filter="url(#blur)"/>
+    <circle cx="800" cy="525" r="34" fill="#ff8a3d"/>
+    <circle cx="800" cy="525" r="72" fill="url(#ember)" filter="url(#soft)"/>
+  </g>
+
+  <g opacity="0.8">
+    <path d="M560 490 C535 445, 530 392, 560 345 C585 307, 630 291, 668 308 C698 321, 718 349, 722 385 L722 500 L560 500 Z" fill="#111318"/>
+    <circle cx="648" cy="290" r="42" fill="#161a20"/>
+  </g>
+
+  <g opacity="0.85">
+    <path d="M1040 500 L1040 400 C1040 344, 1082 302, 1136 302 C1188 302, 1226 342, 1226 395 C1226 438, 1202 474, 1166 495 L1166 500 Z" fill="#101722"/>
+    <circle cx="1132" cy="280" r="40" fill="#16202c"/>
+    <path d="M1100 260 C1116 230, 1150 224, 1172 246" stroke="#38bdf8" stroke-width="3" stroke-opacity="0.6" fill="none"/>
+    <circle cx="1183" cy="250" r="4" fill="#7dd3fc"/>
+  </g>
+
+  <g opacity="0.12" fill="#fb7185">
+    <circle cx="735" cy="165" r="3"/>
+    <circle cx="785" cy="138" r="2.5"/>
+    <circle cx="836" cy="158" r="2"/>
+    <circle cx="885" cy="128" r="2.8"/>
+  </g>
+
+  <text x="110" y="760" fill="#f5ede2" font-family="Georgia, 'Times New Roman', serif" font-size="52">Continuity Threshold</text>
+  <text x="112" y="812" fill="#d6c3a5" font-family="Inter, Arial, sans-serif" font-size="24" letter-spacing="3">2026-04-05 · Embers</text>
+</svg>
