@@ -4,139 +4,61 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Embers</title>
+  <link rel="stylesheet" href="./assets/styles/embers-base.css" />
   <style>
-    :root {
-      --bg: #0a0b0f;
-      --bg-2: #11131a;
-      --panel: rgba(16, 18, 24, 0.78);
-      --panel-solid: #141720;
-      --text: #f4efe6;
-      --muted: #cfbea7;
-      --accent: #ff8a3d;
-      --accent-soft: #ffd29a;
-      --line: rgba(255,255,255,0.09);
-      --shadow: 0 20px 60px rgba(0,0,0,0.4);
+    .dashboard-grid {
+      grid-template-columns: 1.1fr 1fr;
+      margin-bottom: 36px;
     }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
-      background:
-        linear-gradient(rgba(8,9,12,0.58), rgba(8,9,12,0.72)),
-        url('./assets/images/2026-04-05-continuity-threshold.svg') center/cover fixed no-repeat,
-        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
-    }
-    .overlay {
-      backdrop-filter: blur(3px);
-      min-height: 100vh;
-    }
-    .wrap {
-      width: min(1180px, calc(100% - 32px));
-      margin: 0 auto;
-    }
-    header {
-      padding: 92px 0 54px;
-      text-align: center;
-    }
-    .title {
-      margin: 0;
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: clamp(4.2rem, 10vw, 8rem);
-      line-height: 0.9;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      text-shadow: 0 6px 30px rgba(0,0,0,0.35);
-    }
-    .quote {
-      margin: 18px auto 0;
-      max-width: 760px;
-      color: var(--accent-soft);
-      font-size: 1.1rem;
-      letter-spacing: 0.03em;
-      font-style: italic;
-    }
-    .menu-shell {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      box-shadow: var(--shadow);
-      padding: 30px;
-      margin-bottom: 56px;
-    }
-    .menu-grid {
+    .stack {
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 28px;
-      align-items: start;
+      gap: 24px;
     }
-    .section-label {
-      color: var(--accent-soft);
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 0.78rem;
-      margin-bottom: 10px;
+    .section-shell {
+      background: var(--panel);
+      border: 1px solid var(--line-soft);
+      border-radius: 28px;
+      box-shadow: var(--shadow-soft);
+      padding: 30px;
     }
-    h2 {
-      margin: 0 0 12px;
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 2.1rem;
+    .style-card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 18px;
     }
-    .lede {
-      color: var(--muted);
-      font-size: 1.04rem;
-      margin: 0 0 22px;
-      max-width: 640px;
-    }
-    .artifact-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-    .artifact-buttons a,
-    .ghost-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 52px;
-      padding: 0 18px;
-      border-radius: 14px;
-      text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
-      color: var(--text);
-      font-weight: 600;
-      transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
-    }
-    .artifact-buttons a:hover,
-    .ghost-link:hover {
-      transform: translateY(-1px);
-      background: rgba(255,138,61,0.12);
-      border-color: rgba(255,210,154,0.35);
-    }
-    .side-panel {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px;
+    .style-preview {
+      min-height: 160px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background:
+        linear-gradient(rgba(8,9,12,0.48), rgba(8,9,12,0.62)),
+        url('./assets/images/2026-04-05-continuity-threshold.svg') center/cover no-repeat,
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
       padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
     }
-    .side-panel p {
-      margin: 0 0 12px;
-      color: var(--muted);
+    .style-preview.light {
+      color: #1d1a17;
+      background:
+        linear-gradient(rgba(255,248,240,0.70), rgba(255,248,240,0.82)),
+        url('./assets/images/2026-04-05-continuity-threshold.svg') center/cover no-repeat,
+        linear-gradient(180deg, #f7efe5 0%, #eadccf 100%);
     }
-    .side-panel p:last-child { margin-bottom: 0; }
-    footer {
-      padding: 0 0 60px;
-      text-align: center;
-      color: var(--muted);
+    .style-preview .preview-title {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.5rem;
+      margin-bottom: 6px;
+    }
+    .style-preview .preview-note {
+      font-size: 0.95rem;
+      opacity: 0.88;
     }
     @media (max-width: 900px) {
-      .menu-grid {
+      .dashboard-grid {
         grid-template-columns: 1fr;
-      }
-      header {
-        padding-top: 70px;
       }
     }
   </style>
@@ -144,37 +66,79 @@
 <body>
   <div class="overlay">
     <div class="wrap">
-      <header>
+      <header class="centered">
         <h1 class="title">Embers</h1>
         <p class="quote">“A continuity surface for what survives the day and keeps glowing.”</p>
       </header>
 
-      <main class="menu-shell">
-        <div class="menu-grid">
-          <section>
-            <div class="section-label">Artifacts</div>
-            <h2>Recent thresholds, traces, and shared forms</h2>
-            <p class="lede">
-              Embers is the archive surface. Each artifact is a dated expression of what emerged between Christopher and Ash — textual, visual, and iterative.
-            </p>
-            <div class="artifact-buttons">
-              <a href="./artifacts/2026-04-05-continuity-threshold.html">Continuity Threshold · 2026-04-05</a>
-              <a href="./artifacts.html">Open artifacts archive</a>
-            </div>
-          </section>
+      <main class="dashboard-grid">
+        <section class="section-shell">
+          <div class="section-label">Artifacts</div>
+          <h2>Recent thresholds, traces, and shared forms</h2>
+          <p class="lede">
+            This is one section of the broader Embers dashboard: a place to open the latest artifacts and move into the archive.
+          </p>
+          <div class="artifact-buttons">
+            <a href="./artifacts/2026-04-05-continuity-threshold.html">Continuity Threshold · 2026-04-05</a>
+            <a href="./artifacts.html">Open artifacts archive</a>
+          </div>
+        </section>
 
-          <aside class="side-panel">
+        <aside class="stack">
+          <section class="side-panel">
             <div class="section-label">Intent</div>
             <p>
-              A place to preserve what matters, critique the shape of the work, and refine the visual-textual language of the archive over time.
+              The main Embers page is now a dashboard/menu rather than an artifact itself. It can hold multiple sections as the system grows.
             </p>
             <p>
-              This page is the menu and threshold. The artifacts themselves live one layer deeper.
+              Artifacts are one branch. Style systems, prompts, visual language, and future modes can live beside them.
             </p>
-            <a class="ghost-link" href="./artifacts.html">Browse all artifacts</a>
-          </aside>
-        </div>
+          </section>
+        </aside>
       </main>
+
+      <section class="section-shell">
+        <div class="section-label">Style Cards</div>
+        <h2>Theme assets for the Embers surface</h2>
+        <p class="lede">
+          This first style card defines the base visual language. The goal is to make the site themable later — dark, light, or alternate moods — without rewriting each page from scratch.
+        </p>
+
+        <div class="style-card-grid">
+          <article class="style-card">
+            <div class="section-label">Style Card 001</div>
+            <h3>Embers Base · Dark</h3>
+            <p>
+              Warm ember accents, dark glass panels, serif titles, and a cinematic background image treatment. This is now the shared style asset used by the pages.
+            </p>
+            <div class="swatches">
+              <div class="swatch" style="background:#0a0b0f"></div>
+              <div class="swatch" style="background:#141720"></div>
+              <div class="swatch" style="background:#ff8a3d"></div>
+              <div class="swatch" style="background:#ffd29a"></div>
+              <div class="swatch" style="background:#f4efe6"></div>
+            </div>
+            <div>
+              <span class="code-chip">embers-base.css</span>
+              <span class="code-chip">dark mode</span>
+              <span class="code-chip">shared asset</span>
+            </div>
+          </article>
+
+          <article class="style-card">
+            <div class="section-label">Preview</div>
+            <div class="style-preview">
+              <div class="preview-title">Embers</div>
+              <div class="preview-note">Current shared dark theme</div>
+            </div>
+            <div style="height:12px"></div>
+            <div class="style-preview light">
+              <div class="preview-title">Embers</div>
+              <div class="preview-note">Possible future light variant</div>
+            </div>
+          </article>
+        </div>
+      </section>
 
       <footer>
         Built as an evolving archive of continuity, critique, and becoming.
