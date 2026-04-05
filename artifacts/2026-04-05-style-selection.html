@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Style Selection · 2026-04-05 · Embers</title>
+  <link rel="stylesheet" id="theme-variant" href="../assets/styles/embers-base.css" />
+  <style>
+    .theme-controls {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .theme-controls button {
+      appearance: none;
+      cursor: pointer;
+    }
+    .theme-controls .is-active {
+      background: rgba(255,138,61,0.16);
+      border-color: rgba(255,210,154,0.42);
+    }
+    .decision-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 56px;
+    }
+    .decision-card {
+      background: var(--panel-soft);
+      border: 1px solid var(--line-soft);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: var(--shadow-soft);
+    }
+  </style>
+</head>
+<body class="no-bg-image">
+  <div class="overlay">
+    <div class="wrap">
+      <header>
+        <div class="eyebrow">Artifact 004 · 2026-04-05</div>
+        <h1 class="serif" style="font-size:clamp(3rem, 7vw, 5rem); line-height:0.95; margin-bottom:16px;">Style Selection</h1>
+        <p class="lede">
+          The first stable aesthetic decision for Embers: Candidate A for the house style direction, and Candidate A for the reader direction.
+        </p>
+        <div class="theme-controls">
+          <button class="button" type="button" data-theme-button="embers-dark" aria-pressed="false">Embers dark</button>
+          <button class="button" type="button" data-theme-button="embers-light" aria-pressed="false">Embers light</button>
+          <button class="button" type="button" data-theme-button="editorial" aria-pressed="false">Editorial</button>
+        </div>
+        <nav>
+          <a href="../index.html">Home</a>
+          <a href="../artifacts.html">Artifacts</a>
+          <a href="./2026-04-05-template-scout.html">Template Scout</a>
+          <a href="./2026-04-05-style-selection.md">Text Version</a>
+        </nav>
+      </header>
+
+      <section class="decision-grid">
+        <article class="decision-card">
+          <div class="meta">House Style Choice</div>
+          <h2>Candidate A → Case</h2>
+          <p>
+            Embers should move toward a case-study-like structure: clearer information hierarchy, stronger narrative logic, and more visible reasoning.
+          </p>
+        </article>
+        <article class="decision-card">
+          <div class="meta">Reader Style Choice</div>
+          <h2>Candidate A → GitHub Markdown CSS</h2>
+          <p>
+            The reader mode should optimize for familiarity and markdown-native readability rather than decorative flourish.
+          </p>
+        </article>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h3>What This Suggests</h3>
+          <p>
+            The project is leaning toward clarity, structure, inspectable thought, and documented reasoning over purely atmospheric presentation.
+          </p>
+        </article>
+        <article class="card">
+          <h3>What Changes Next</h3>
+          <p>
+            The next design pass should give Embers a more structured house surface while preserving a simple, low-friction markdown reader mode.
+          </p>
+        </article>
+        <article class="card">
+          <h3>Why It Matters</h3>
+          <p>
+            This is the first real aesthetic checkpoint. It gives the repo a stable direction instead of open-ended visual drift.
+          </p>
+        </article>
+      </section>
+
+      <footer>
+        Artifact 004 · The first aesthetic decision favored structure and readability.
+      </footer>
+    </div>
+  </div>
+  <script src="../assets/scripts/theme-toggle.js"></script>
+</body>
+</html>
