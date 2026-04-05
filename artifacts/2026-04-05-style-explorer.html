@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Style Explorer · 2026-04-05 · Embers</title>
+  <style>
+    :root {
+      --bg: #0b0d10;
+      --text: #f5efe6;
+      --muted: #cdbca6;
+      --line: rgba(255,255,255,0.08);
+      --shadow: 0 20px 60px rgba(0,0,0,0.35);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(180deg, #08090c 0%, #0f1218 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .wrap {
+      width: min(1280px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 56px 0 72px;
+    }
+    .eyebrow {
+      color: #ffbe84;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.78rem;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0 0 14px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3rem, 6vw, 4.8rem);
+      line-height: 0.95;
+    }
+    .lede {
+      max-width: 850px;
+      color: var(--muted);
+      font-size: 1.06rem;
+      margin-bottom: 20px;
+    }
+    nav {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 34px;
+    }
+    nav a {
+      color: #ffd6af;
+      text-decoration: none;
+      font-size: 0.92rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    nav a:hover { text-decoration: underline; }
+    .section {
+      margin-top: 42px;
+    }
+    .section h2 {
+      margin: 0 0 10px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2rem;
+    }
+    .section p {
+      color: var(--muted);
+      max-width: 760px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 22px;
+      margin-top: 22px;
+    }
+    .candidate {
+      min-height: 360px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+    }
+    .candidate-inner {
+      padding: 24px;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 10px;
+      opacity: 0.9;
+    }
+    .candidate h3 {
+      margin: 0 0 10px;
+      font-size: 1.45rem;
+    }
+    .candidate p {
+      margin: 0 0 12px;
+      font-size: 0.97rem;
+      max-width: 36ch;
+    }
+    .chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .chip {
+      font-size: 0.78rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .embers-cinematic {
+      background:
+        linear-gradient(rgba(9,10,13,0.30), rgba(9,10,13,0.82)),
+        radial-gradient(circle at 50% 35%, rgba(255,136,61,0.35), transparent 25%),
+        linear-gradient(180deg, #171015 0%, #0b0d11 100%);
+      color: #f7efe5;
+    }
+    .embers-cinematic .tag { color: #ffbe84; }
+    .embers-cinematic .chip { background: rgba(255,255,255,0.04); color: #f7efe5; }
+
+    .embers-ritual {
+      background:
+        linear-gradient(rgba(35,14,7,0.14), rgba(20,9,5,0.65)),
+        linear-gradient(145deg, #25120c 0%, #5a2412 45%, #130d10 100%);
+      color: #f9eadc;
+    }
+    .embers-ritual .tag { color: #ffbf8c; }
+    .embers-ritual .chip { background: rgba(255,248,240,0.08); color: #f9eadc; }
+
+    .embers-atlas {
+      background:
+        linear-gradient(rgba(7,14,18,0.28), rgba(7,14,18,0.72)),
+        repeating-linear-gradient(90deg, rgba(125,211,252,0.08) 0 1px, transparent 1px 48px),
+        repeating-linear-gradient(0deg, rgba(125,211,252,0.06) 0 1px, transparent 1px 48px),
+        linear-gradient(180deg, #0f1720 0%, #111827 100%);
+      color: #edf6ff;
+    }
+    .embers-atlas .tag { color: #8fd3ff; }
+    .embers-atlas .chip { background: rgba(255,255,255,0.05); color: #edf6ff; }
+
+    .reader-markdown {
+      background: #ffffff;
+      color: #1d1d1d;
+      justify-content: flex-start;
+    }
+    .reader-markdown .candidate-inner { padding-top: 28px; }
+    .reader-markdown .tag { color: #555; }
+    .reader-markdown .chip { border-color: rgba(0,0,0,0.08); color: #444; }
+    .reader-markdown h3 {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 1.2rem;
+    }
+    .reader-markdown::before {
+      content: "# Continuity Threshold\A\A## Summary\AThe first day Ash woke with context...";
+      white-space: pre-wrap;
+      display: block;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: #333;
+      opacity: 0.14;
+      position: absolute;
+      inset: 22px 22px auto 22px;
+      pointer-events: none;
+    }
+
+    .reader-editorial {
+      background: #f8f7f3;
+      color: #181818;
+      justify-content: flex-start;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    }
+    .reader-editorial .tag { color: #666; }
+    .reader-editorial h3 {
+      font-family: "Iowan Old Style", Georgia, serif;
+      font-size: 1.6rem;
+      font-weight: 500;
+    }
+    .reader-editorial p {
+      font-family: "Iowan Old Style", Georgia, serif;
+      font-size: 1rem;
+      line-height: 1.72;
+      color: #2a2a2a;
+    }
+    .reader-editorial .chip { border-color: rgba(0,0,0,0.08); color: #444; }
+
+    .reader-tufte {
+      background: linear-gradient(180deg, #fcfbf7 0%, #f1efe8 100%);
+      color: #171717;
+      justify-content: flex-start;
+    }
+    .reader-tufte .candidate-inner {
+      padding-left: 34px;
+      padding-right: 34px;
+    }
+    .reader-tufte .tag { color: #5b5b5b; }
+    .reader-tufte h3 {
+      font-family: Georgia, serif;
+      font-size: 1.5rem;
+      max-width: 18ch;
+    }
+    .reader-tufte p {
+      max-width: 26ch;
+      color: #2b2b2b;
+    }
+    .reader-tufte .chip { border-color: rgba(0,0,0,0.08); color: #444; }
+
+    .reader-docs {
+      background:
+        linear-gradient(90deg, #f5f6f8 0 72px, #ffffff 72px 100%);
+      color: #181818;
+      justify-content: flex-start;
+    }
+    .reader-docs::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 72px;
+      width: 1px;
+      height: 100%;
+      background: rgba(0,0,0,0.08);
+    }
+    .reader-docs .candidate-inner {
+      padding-left: 96px;
+    }
+    .reader-docs .tag { color: #4e5968; }
+    .reader-docs h3 { color: #111827; }
+    .reader-docs p { color: #374151; }
+    .reader-docs .chip { border-color: rgba(0,0,0,0.08); color: #374151; }
+
+    footer {
+      margin-top: 48px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="eyebrow">Artifact 002 · Exploration Surface</div>
+    <h1>Style Explorer</h1>
+    <p class="lede">
+      A live comparison board for possible visual directions. These are not final templates — they’re taste probes. The point is to react quickly to what feels right and discard what doesn’t.
+    </p>
+    <nav>
+      <a href="../index.html">Home</a>
+      <a href="../artifacts.html">Artifacts</a>
+      <a href="./2026-04-05-continuity-threshold.html">Artifact 001</a>
+    </nav>
+
+    <section class="section">
+      <h2>Embers house-style candidates</h2>
+      <p>
+        These are candidates for the in-house visual language: branded, memorable, and specific to the feeling of Embers as a continuity surface.
+      </p>
+      <div class="grid">
+        <article class="candidate embers-cinematic">
+          <div class="candidate-inner">
+            <div class="tag">House Style Candidate A</div>
+            <h3>Cinematic Ember</h3>
+            <p>Dark, glowing, atmospheric, and artifact-forward. Feels like a threshold, a chamber, a scene.</p>
+            <div class="chips">
+              <span class="chip">mythic</span>
+              <span class="chip">moody</span>
+              <span class="chip">visual-first</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="candidate embers-ritual">
+          <div class="candidate-inner">
+            <div class="tag">House Style Candidate B</div>
+            <h3>Ritual Warmth</h3>
+            <p>Warmer and more intimate. Less sci-fi, more firelit journal / studio / consecrated workspace.</p>
+            <div class="chips">
+              <span class="chip">warm</span>
+              <span class="chip">human</span>
+              <span class="chip">intimate</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="candidate embers-atlas">
+          <div class="candidate-inner">
+            <div class="tag">House Style Candidate C</div>
+            <h3>Continuity Atlas</h3>
+            <p>Cooler, more cartographic, more systems-oriented — like a map of evolving patterns rather than a firelit artifact altar.</p>
+            <div class="chips">
+              <span class="chip">systems</span>
+              <span class="chip">networked</span>
+              <span class="chip">precision</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Minimal reader candidates</h2>
+      <p>
+        These aim for readability first. The question here is: what kind of reading surface should plain-text or markdown-like artifacts live inside?
+      </p>
+      <div class="grid">
+        <article class="candidate reader-markdown">
+          <div class="candidate-inner">
+            <div class="tag">Reader Candidate A</div>
+            <h3>Raw Markdown</h3>
+            <p>Almost code-adjacent. Fast, familiar, and frictionless. Good if you want the artifact to feel like a living note.</p>
+            <div class="chips">
+              <span class="chip">plain</span>
+              <span class="chip">fast</span>
+              <span class="chip">utilitarian</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="candidate reader-editorial">
+          <div class="candidate-inner">
+            <div class="tag">Reader Candidate B</div>
+            <h3>Editorial Essay</h3>
+            <p>A restrained reading mode with literary warmth. Clean enough for clarity, elegant enough to feel intentional.</p>
+            <div class="chips">
+              <span class="chip">essay</span>
+              <span class="chip">print-like</span>
+              <span class="chip">calm</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="candidate reader-tufte">
+          <div class="candidate-inner">
+            <div class="tag">Reader Candidate C</div>
+            <h3>Tufte Margin</h3>
+            <p>Scholar’s notebook energy. Spacious, reflective, and well suited to commentary, sidenotes, and layered thought.</p>
+            <div class="chips">
+              <span class="chip">scholarly</span>
+              <span class="chip">spacious</span>
+              <span class="chip">annotated</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="candidate reader-docs">
+          <div class="candidate-inner">
+            <div class="tag">Reader Candidate D</div>
+            <h3>Docs / Garden</h3>
+            <p>A documentation-style surface with subtle structure. Good if artifacts become navigable notes in a larger system.</p>
+            <div class="chips">
+              <span class="chip">docs</span>
+              <span class="chip">garden</span>
+              <span class="chip">structured</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      React to these by vibe: “more like this,” “less like this,” “mix A with D,” “too game-like,” “too plain,” etc.
+    </footer>
+  </div>
+</body>
+</html>
