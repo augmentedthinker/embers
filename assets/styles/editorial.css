@@ -1,0 +1,177 @@
+:root {
+  --bg: #f7f7f5;
+  --bg-2: #efeee9;
+  --panel: rgba(255,255,255,0.78);
+  --panel-solid: #ffffff;
+  --panel-soft: rgba(255,255,255,0.88);
+  --text: #181818;
+  --muted: #626262;
+  --accent: #222222;
+  --accent-soft: #444444;
+  --line: rgba(0,0,0,0.08);
+  --line-soft: rgba(0,0,0,0.08);
+  --shadow: 0 10px 30px rgba(0,0,0,0.05);
+  --shadow-soft: 0 8px 20px rgba(0,0,0,0.04);
+}
+
+body {
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+  line-height: 1.78;
+}
+
+body.no-bg-image {
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+}
+
+.overlay {
+  backdrop-filter: none;
+}
+
+.wrap {
+  width: min(860px, calc(100% - 32px));
+}
+
+header,
+header.centered {
+  padding: 56px 0 28px;
+  text-align: left;
+}
+
+.title,
+h1,
+h2,
+h3,
+.serif {
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  text-shadow: none;
+  letter-spacing: 0;
+}
+
+.title {
+  font-size: clamp(3rem, 7vw, 4.6rem);
+  line-height: 1;
+}
+
+.quote {
+  margin: 12px 0 0;
+  max-width: 680px;
+  font-size: 1rem;
+  font-style: normal;
+  letter-spacing: 0;
+  color: var(--muted);
+}
+
+.eyebrow,
+.section-label,
+.meta,
+nav a,
+a {
+  color: var(--accent);
+}
+
+nav {
+  gap: 14px;
+}
+
+nav a {
+  letter-spacing: 0.04em;
+  font-size: 0.82rem;
+}
+
+.menu-shell,
+.hero,
+.artifact,
+.card,
+.side-panel,
+.coming-soon,
+.style-card,
+.section-shell {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+}
+
+.menu-shell,
+.section-shell,
+.card,
+.side-panel,
+.style-card,
+.coming-soon {
+  padding: 0;
+}
+
+.hero {
+  margin: 24px 0 40px;
+  overflow: visible;
+}
+
+.hero img,
+.artifact img {
+  border-radius: 0;
+  border: 1px solid var(--line-soft);
+}
+
+.hero-copy,
+.artifact-body {
+  padding: 18px 0 0;
+  background: transparent;
+}
+
+.grid,
+.dashboard-grid,
+.menu-grid,
+.style-card-grid {
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+
+.artifact {
+  grid-template-columns: 1fr;
+  gap: 0;
+  overflow: visible;
+}
+
+.artifact-buttons,
+.links,
+.button-row,
+.theme-toggle-row,
+.theme-controls {
+  gap: 10px;
+}
+
+.artifact-buttons a,
+.ghost-link,
+.button,
+.links a {
+  min-height: auto;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line-soft);
+  background: transparent;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.artifact-buttons a:hover,
+.ghost-link:hover,
+.button:hover,
+.links a:hover {
+  background: rgba(0,0,0,0.04);
+  border-color: rgba(0,0,0,0.14);
+}
+
+.swatch {
+  border-radius: 4px;
+}
+
+.code-chip {
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+}
+
+footer {
+  text-align: left;
+  padding: 20px 0 56px;
+}

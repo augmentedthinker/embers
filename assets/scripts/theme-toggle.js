@@ -1,43 +1,42 @@
 (function () {
   const STORAGE_KEY = 'embers-theme';
-  const themes = {
-    base: {
-      id: 'theme-base',
-      href: '../assets/styles/embers-base.css'
-    },
-    light: {
-      id: 'theme-light',
-      href: '../assets/styles/embers-minimal-light.css'
-    }
-  };
 
-  function resolveHref(type) {
-    const path = window.location.pathname;
-    const inArtifact = /\/artifacts\//.test(path);
-    if (type === 'base') return inArtifact ? '../assets/styles/embers-base.css' : './assets/styles/embers-base.css';
-    return inArtifact ? '../assets/styles/embers-minimal-light.css' : './assets/styles/embers-minimal-light.css';
+  function themeHref(name, artifactPage) {
+    const basePath = artifactPage ? '../assets/styles/' : './assets/styles/';
+    switch (name) {
+      case 'embers-light': return basePath + 'embers-light.css';
+      case 'editorial': return basePath + 'editorial.css';
+      case 'embers-dark':
+      default: return basePath + 'embers-base.css';
+    }
   }
 
   function applyTheme(name) {
-    const theme = name === 'light' ? 'light' : 'base';
+    const valid = ['embers-dark', 'embers-light', 'editorial'];
+    const theme = valid.includes(name) ? name : 'embers-dark';
+    const artifactPage = /\/artifacts\//.test(window.location.pathname);
     const link = document.getElementById('theme-variant');
-    if (link) link.setAttribute('href', resolveHref(theme));
+    if (link) link.setAttribute('href', themeHref(theme, artifactPage));
+
     document.documentElement.setAttribute('data-theme', theme);
     document.querySelectorAll('[data-theme-button]').forEach((button) => {
       const active = button.getAttribute('data-theme-button') === theme;
       button.setAttribute('aria-pressed', active ? 'true' : 'false');
       button.classList.toggle('is-active', active);
     });
+
     try { localStorage.setItem(STORAGE_KEY, theme); } catch (e) {}
   }
 
   function init() {
-    const saved = (() => {
-      try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; }
-    })();
-    applyTheme(saved || 'base');
+    let saved = null;
+    try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+    applyTheme(saved || 'embers-dark');
+
     document.querySelectorAll('[data-theme-button]').forEach((button) => {
-      button.addEventListener('click', () => applyTheme(button.getAttribute('data-theme-button')));
+      button.addEventListener('click', () => {
+        applyTheme(button.getAttribute('data-theme-button'));
+      });
     });
   }
 
